@@ -1,0 +1,39 @@
+更改的代码如下：
+1、更改命名方式
+2、添加注释
+3、异常处理
+
+# -*- coding:utf-8 -*-
+try:
+    f = open("words.txt",'r')
+    char = f.read(1);
+
+
+    words = ''; 
+    words_list = [];  #存储由空格或换行隔开的单词
+    while char != '':
+        if (char != ' ' and char != '\n'):
+            words += char;
+            char = f.read(1);
+        else:
+            words_list.append(words);
+            words = '';
+            char = f.read(1);
+    words_list.append(words);
+
+    words_num = 0;  #单词的数量
+    appeared_words = [];  #遍历时以出现过的单词
+    i = 0;
+    while (i != len(words_list)):
+        if (words_list[i] in appeared_words):
+            i += 1;
+        else:
+            words_num = words_list.count(words_list[i]);
+            words_num = str(words_num);
+            print (words_list[i] + ' ' + words_num);
+            appeared_words.append(words_list[i]);
+            i +=1;
+except:
+    print('文件错误！');
+finally:
+    f.close();
