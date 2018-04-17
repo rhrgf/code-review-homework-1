@@ -1,3 +1,8 @@
+//相比与原代码变化部分如下：
+
+//将原代码main函数的功能模块化，将计算单词和频率的功能写入一个函数。
+//考虑到实用性，增加了按单词频率排序，和写入文本的函数
+
 #include <stdio.h>
 #include <string.h>
  
@@ -11,7 +16,7 @@ int countword(FILE *fp ,struct words *word)
 {
     int i=0,j=0,k=0,flag =0;
     char c;
-	char tmp[]={0};//第一种方法
+	char tmp[]={0};
 	while ((c= fgetc(fp))!=EOF)
     {    
         if (c!=',' && c!='.' && c!='?' && c!=' ' && c!='\n')
